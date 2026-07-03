@@ -1,23 +1,37 @@
+import java.util.Scanner;
+
 public class JogoDeXadrez implements Jogo {
 
     @Override
-    public void iniciar(){
+    public void iniciar() {
+
+        Scanner scanner = new Scanner(System.in);
 
         Tabuleiro tabuleiro = new Tabuleiro();
 
         Jogador jogador1 = new JogadorHumano('b');
         Jogador jogador2 = new JogadorSintetico('p');
 
-        while(!tabuleiro.acabouOJogo()){
+        while (!tabuleiro.acabouOJogo()) {
 
-            jogador1.jogar(tabuleiro, "", 0);
-            jogador2.jogar(tabuleiro, "", 0);
+            while (!jogador1.jogar(tabuleiro, "", "")) {
 
-            break;
+            }
+
+            jogador2.jogar(tabuleiro, "", "");
+
+            System.out.println("Deseja continuar jogando? (S/N)");
+            String resposta = scanner.nextLine();
+
+            if (resposta.equalsIgnoreCase("N")) {
+                break;
+            }
+
         }
+
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         JogoDeXadrez jogo = new JogoDeXadrez();
 

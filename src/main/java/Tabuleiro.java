@@ -2,10 +2,10 @@ public class Tabuleiro {
 
     private String[][] casas = new String[8][8];
 
-    public Tabuleiro(){
+    public Tabuleiro() {
 
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 casas[i][j] = "   ";
             }
         }
@@ -15,13 +15,64 @@ public class Tabuleiro {
         mostrar();
     }
 
-    public void colocarPecas(){
+    public boolean casaLivre(String casa) {
 
-        Rei reiBranco = new Rei("K0b");
-        Rei reiPreto = new Rei("K0p");
+        char coluna = casa.charAt(0);
+        char linha = casa.charAt(1);
 
-        Rainha rainhaBranca = new Rainha("Q0b");
-        Rainha rainhaPreta = new Rainha("Q0p");
+        int colunaMatriz = coluna - 'a';
+        int linhaMatriz = 8 - (linha - '0');
+
+        if (casas[linhaMatriz][colunaMatriz].equals("   ")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean moverPeca(String nomeDaPeca, String casa) {
+
+        char coluna = casa.charAt(0);
+        char linha = casa.charAt(1);
+
+        int colunaMatriz = coluna - 'a';
+        int linhaMatriz = 8 - (linha - '0');
+
+        if (!casaLivre(casa)) {
+            System.out.println("Nao pode mover a peça, ja existe outra peça nessa casa.");
+            return false;
+        }
+
+        for (int i = 0; i < 8; i++) {
+
+            for (int j = 0; j < 8; j++) {
+
+                if (casas[i][j].equals(nomeDaPeca)) {
+
+                    casas[linhaMatriz][colunaMatriz] = nomeDaPeca;
+                    casas[i][j] = "   ";
+
+                    mostrar();
+
+                    return true;
+                }
+
+            }
+
+        }
+
+        System.out.println("Peça não encontrada.");
+
+        return false;
+    }
+
+    public void colocarPecas() {
+
+        Rei k0b = new Rei("K0b");
+        Rei k0p = new Rei("K0p");
+
+        Rainha q0b = new Rainha("Q0b");
+        Rainha q0p = new Rainha("Q0p");
 
         Torre t1b = new Torre("T1b");
         Torre t2b = new Torre("T2b");
@@ -55,13 +106,49 @@ public class Tabuleiro {
         Peao p6p = new Peao("P6p");
         Peao p7p = new Peao("P7p");
         Peao p8p = new Peao("P8p");
+
+        casas[0][0] = t1p.nome;
+        casas[0][1] = h1p.nome;
+        casas[0][2] = b1p.nome;
+        casas[0][3] = q0p.nome;
+        casas[0][4] = k0p.nome;
+        casas[0][5] = b2p.nome;
+        casas[0][6] = h2p.nome;
+        casas[0][7] = t2p.nome;
+
+        casas[1][0] = p1p.nome;
+        casas[1][1] = p2p.nome;
+        casas[1][2] = p3p.nome;
+        casas[1][3] = p4p.nome;
+        casas[1][4] = p5p.nome;
+        casas[1][5] = p6p.nome;
+        casas[1][6] = p7p.nome;
+        casas[1][7] = p8p.nome;
+
+        casas[6][0] = p1b.nome;
+        casas[6][1] = p2b.nome;
+        casas[6][2] = p3b.nome;
+        casas[6][3] = p4b.nome;
+        casas[6][4] = p5b.nome;
+        casas[6][5] = p6b.nome;
+        casas[6][6] = p7b.nome;
+        casas[6][7] = p8b.nome;
+
+        casas[7][0] = t1b.nome;
+        casas[7][1] = h1b.nome;
+        casas[7][2] = b1b.nome;
+        casas[7][3] = q0b.nome;
+        casas[7][4] = k0b.nome;
+        casas[7][5] = b2b.nome;
+        casas[7][6] = h2b.nome;
+        casas[7][7] = t2b.nome;
     }
 
-    public void mostrar(){
+    public void mostrar() {
 
-        for(int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
 
-            for(int j = 0; j < 8; j++){
+            for (int j = 0; j < 8; j++) {
                 System.out.print("[" + casas[i][j] + "]");
             }
 
@@ -69,7 +156,7 @@ public class Tabuleiro {
         }
     }
 
-    public boolean acabouOJogo(){
+    public boolean acabouOJogo() {
         return false;
     }
 
