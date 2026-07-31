@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class JogoDeXadrez implements Jogo {
 
     @Override
-    public int iniciar(String nomeDoJogo) {
+    public void iniciar() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -35,7 +35,7 @@ public class JogoDeXadrez implements Jogo {
 
         JogoDeXadrez jogo = new JogoDeXadrez();
 
-        jogo.iniciar("Jogo de teste");
+        jogo.iniciar();
 
         System.out.println("Gabriel Giovanini");
     }
