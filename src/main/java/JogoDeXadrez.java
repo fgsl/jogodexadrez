@@ -28,7 +28,6 @@ public class JogoDeXadrez implements Jogo {
             }
 
         }
-        return 0;
     }
 
     public static void main(String[] args) {
