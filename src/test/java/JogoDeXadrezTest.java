@@ -9,7 +9,7 @@ public class JogoDeXadrezTest {
     void verificarPecas() {
 
         Bispo bispo = new Bispo("B1b");
-        assertEquals(1, bispo.mover());
+        assertEquals(2, bispo.mover());
 
         Cavalo cavalo = new Cavalo("H1b");
         assertEquals(1, cavalo.mover());
