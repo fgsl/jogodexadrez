@@ -36,7 +36,7 @@ public class JogoDeXadrez implements Jogo {
 
         jogo.iniciar();
 
-        System.out.println("Gabriel Giovanini");
+        System.out.println("Flávio Lisboa");
     }
 
 }
