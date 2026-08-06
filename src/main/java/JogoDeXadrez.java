@@ -30,7 +30,7 @@ public class JogoDeXadrez implements Jogo {
         }
     }
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
 
         JogoDeXadrez jogo = new JogoDeXadrez();
 
